@@ -52,7 +52,7 @@ for msg in consumer:
         }
         print(comment_rec)
         comment_id = db.bdnosql_comments.insert_one(comment_rec)
-        print("Data inserted with record ids", comment_id)
+        print("Comment inserted with record ids", comment_id)
     except Exception as e:
         print("Could not insert into MongoDB:", e)
 
@@ -66,11 +66,11 @@ for msg in consumer:
                 }
             }
         ])
-        db.bdnosql_sumary.delete_many({})
+        db.bdnosql_sumaryComments.delete_many({})
         for i in agg_result:
             print(i)
-            commentsclip_id = db.bdnosql_commentsclip.insert_one(i)
-            print("Sumary inserted with record ids: ", commentsclip_id)
+            sumaryComments_id = db.bdnosql_sumaryComments.insert_one(i)
+            print("Sumary Comments inserted with record ids: ", sumaryComments_id)
     except Exception as e:
         print(f'group vy cought {type(e)}: ')
         print(e)
